@@ -20,35 +20,42 @@
 // these locations using a mapping tool such as Google Maps.)
 
 $(document).ready(function() {
-   
-  //init map
-var mymap = L.map('map-container').setView([46.852, -121.760], 13);
 
-//get street map
-var streetMap = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png?{foo}', {foo: 'bar'});
+    //init map
+    var mymap = L.map('map-container').setView([46.852, -121.760], 13);
 
-//get topography map
-var topoMap = L.tileLayer('http://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-    maxZoom: 17,
-    attribution: 'Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
-});
+    //get street map
+    var streetMap = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png?{foo}', {foo: 'bar'});
 
-//add layers to map
-var mapLayers = {
-    "Street Map": streetMap,
-    "Topography Map": topoMap
-};
-L.control.layers(mapLayers).addTo(mymap);
+    //get topography map
+    var topoMap = L.tileLayer('http://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+        maxZoom: 17,
+        attribution: 'Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+    });
 
-//add default map
-streetMap.addTo(mymap);
+    //add layers to map
+    var mapLayers = {
+        "Street Map": streetMap,
+        "Topography Map": topoMap
+    };
+    L.control.layers(mapLayers).addTo(mymap);
 
+
+    //add default map
+    streetMap.addTo(mymap);
+
+    var marker1 = L.marker([46.852, -121.760]).addTo(mymap);
+    marker1.bindPopup("<b>Welcome to Mt. Rainier!</b><br>This peak is 4,392 feet high.");
+
+    var marker2 = L.marker([46.8496, -121.7123]).addTo(mymap);
+    marker2.bindPopup("<b>Little Tahoma Peak</b><br>Elevation of 11,138 feet.");
+
+    var marker3 = L.marker([46.8456636,-121.7453736
+    ]).addTo(mymap);
+    marker3.bindPopup("<b>Gibraltar Rock, WA</b><br>Elevation of 12,674 feet.");
+
+    var marker4 = L.marker([46.8459412,-121.7675967
+    ]).addTo(mymap);
+    marker4.bindPopup("<b>Point Success, WA</b><br>Elevation of 14,114 feet.");  
 });
     
-/* var map = L.map('map-container').setView([46.852, -121.760], 13);
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    maxZoom: 18,
-    id: 'your.mapbox.project.id',
-    accessToken: 'your.mapbox.public.access.token'
-}).addTo(mymap); */

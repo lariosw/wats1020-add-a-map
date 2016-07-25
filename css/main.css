@@ -6,6 +6,16 @@ body {
     width: 100%;
 }
 
+h1#home {
+    width: 640px;
+    margin: 0 auto;
+}
+
+.carousel-wrapper {
+    max-width: 940px;
+    margin: 0 auto;
+}
+
 #map-container { 
     height: 350px; 
     margin-bottom: 50px;
